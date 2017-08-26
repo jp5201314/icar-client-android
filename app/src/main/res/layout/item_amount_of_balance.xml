@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="amountOfBalance"
+            type="cn.icarowner.icarowner.activity.viewmodel.ItemAmountOfBalanceVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_gray_d8d8d8"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/color_white_faf9f9"
+            android:orientation="vertical"
+            android:paddingEnd="0dp"
+            android:paddingStart="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:gravity="center_vertical"
+                android:text="@string/balance_yuan"
+                android:textColor="@color/color_gray_666666"
+                android:textSize="14sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_gray_d8d8d8" />
+
+            <TextView
+                android:id="@+id/tv_total_balance_fee"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center_vertical"
+                android:text="@{amountOfBalance.amountOfBalance}"
+                android:textColor="@color/color_green_3bb4bc"
+                android:textSize="34sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_gray_d8d8d8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:paddingEnd="12dp"
+                android:paddingStart="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/can_be_use_when_pay"
+                    android:textColor="@color/color_gray_a5a5a6"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/color_white_faf9f9"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center_vertical"
+                android:text="@string/balance_detail"
+                android:textColor="@color/color_gray_666666"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="12dp"
+                android:background="@color/color_gray_d8d8d8" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

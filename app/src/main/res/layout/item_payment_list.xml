@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="itemPaymentList"
+            type="cn.icarowner.icarowner.activity.viewmodel.ItemPaymentListVM" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/fl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/color_white_faf9f9">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_car" />
+
+                <TextView
+                    android:id="@+id/tv_license_plate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:text="@{itemPaymentList.plateNumber}"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/iv_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_vip" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_green_9ad6d9"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/ll_service_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@color/color_green_d4ebeb"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total"
+                        android:textColor="@color/color_black_0e1214"
+                        android:textSize="15sp" />
+
+                    <include layout="@layout/colon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/rmb_symbol"
+                        android:textColor="@color/color_black_0e1214"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_total_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{itemPaymentList.totalFee}"
+                        android:textColor="@color/color_green_3bb4bc"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_to_detail"
+                    android:layout_width="80dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="end"
+                    android:background="@drawable/selector_btn_green"
+                    android:gravity="center"
+                    android:onClick="@{itemPaymentList.onToDetailClick}"
+                    android:text="@string/bill_detail"
+                    android:textColor="@color/color_white_ffffff"
+                    android:textSize="15sp" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

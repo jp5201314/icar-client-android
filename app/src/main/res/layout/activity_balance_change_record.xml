@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="balanceChangeRecordList"
+            type="cn.icarowner.icarowner.activity.viewmodel.BalanceChangeRecordListVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:toolBar="@{balanceChangeRecordList.toolBarTitleVM}" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:onRefreshListener="@{balanceChangeRecordList.onRefreshListener}"
+            app:refreshing="@{balanceChangeRecordList.isRefreshing}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_balance_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_white_faf9f9"
+                app:adapter="@{balanceChangeRecordList.adapter}"
+                app:addOnScrollListener="@{balanceChangeRecordList.onScrollListener}"
+                app:items="@{balanceChangeRecordList.items}"
+                app:layoutManager="@{balanceChangeRecordList.layoutManager}" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</layout>

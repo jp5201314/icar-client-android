@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="personalInfo"
+            type="cn.icarowner.icarowner.activity.viewmodel.PersonalInfoVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:toolBar="@{personalInfo.toolBarTitleVM}" />
+
+        <FrameLayout
+            android:id="@+id/fl_head_image"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/selector_bg_item"
+            android:onClick="@{personalInfo::changeImageClick}">
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:background="@color/color_green_3bb4bc" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_drawer_head_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                app:cricleImageUrl="@{personalInfo.imageUrl}" />
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:paddingRight="12dp"
+                android:src="@drawable/icon_right_arrow_white" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/color_white_faf9f9"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/fl_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/selector_bg_item">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="center"
+                    android:paddingLeft="30dp"
+                    android:text="@string/phone"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="center"
+                    android:paddingRight="30dp"
+                    android:text="@{personalInfo.phoneNum}"
+                    android:textColor="@color/color_gray_a5a5a6"
+                    android:textSize="15sp" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="12dp"
+                android:background="@color/color_gray_d8d8d8"
+                android:orientation="vertical" />
+
+            <FrameLayout
+                android:id="@+id/fl_name"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/selector_bg_item"
+                android:onClick="@{personalInfo::toModifyName}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="center"
+                    android:paddingLeft="30dp"
+                    android:text="@string/name"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="center"
+                    android:paddingRight="30dp"
+                    android:text="@{personalInfo.name}"
+                    android:textColor="@color/color_gray_a5a5a6"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/iv_name_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:paddingRight="12dp"
+                    android:src="@drawable/icon_right_arrow_white" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="start"
+                android:layout_marginLeft="12dp"
+                android:background="@color/color_gray_d8d8d8"
+                android:orientation="vertical" />
+
+            <FrameLayout
+                android:id="@+id/fl_gender"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/selector_bg_item"
+                android:onClick="@{personalInfo::toModifyGender}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="center"
+                    android:paddingLeft="30dp"
+                    android:text="@string/gender"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="center"
+                    android:paddingRight="30dp"
+                    android:text="@{personalInfo.gender}"
+                    android:textColor="@color/color_gray_a5a5a6"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/iv_gender_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:paddingRight="12dp"
+                    android:src="@drawable/icon_right_arrow_white" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="start"
+                android:layout_marginLeft="12dp"
+                android:background="@color/color_gray_d8d8d8"
+                android:orientation="vertical" />
+
+            <FrameLayout
+                android:id="@+id/fl_birth"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/selector_bg_item"
+                android:onClick="@{personalInfo::toModifyBirth}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start|center_vertical"
+                    android:gravity="center"
+                    android:paddingLeft="30dp"
+                    android:text="@string/birth"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_user_birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="center"
+                    android:paddingRight="30dp"
+                    android:text="@{personalInfo.userBirth}"
+                    android:textColor="@color/color_gray_a5a5a6"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/iv_birth_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:paddingRight="12dp"
+                    android:src="@drawable/icon_right_arrow_white" />
+
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="contentService"
+            type="cn.icarowner.icarowner.activity.viewmodel.ContentServiceVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_black_0e1214"
+        android:orientation="vertical">
+
+        <com.bigkoo.convenientbanner.ConvenientBanner xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cb_banner"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@drawable/banner_holder"
+            android:onClick="@{contentService.onBannerClick}"
+            app:canLoop="true"
+            app:onItemClickListener="@{contentService.onBannerItemClickListener}" />
+
+        <LinearLayout
+            android:id="@+id/ll_service_tip"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/color_black_191e23"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{contentService.tip}"
+                android:textColor="@color/color_green_3bb4bc"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@color/color_black_0e1214">
+
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@drawable/line_center_horizontal" />
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="275dp"
+                android:layout_gravity="center"
+                android:background="@drawable/line_center_vertical" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/line_bottom" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_service_button_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_schedule"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_btn"
+                        android:gravity="center"
+                        android:onClick="@{contentService.onScheduleClick}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_schedule"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@{2 == contentService.scheduleStatus ? @drawable/icon_progress_blue_light : (1 == contentService.scheduleStatus ? @drawable/icon_progress_blue : @drawable/icon_progress_dark)}" />
+
+                        <TextView
+                            android:id="@+id/tv_schedule"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/schedule"
+                            android:textColor="@{2 == contentService.scheduleStatus ? @color/color_green_3bb4bc : (1 == contentService.scheduleStatus ? @color/color_green_173236 : @color/color_gray_3e4143)}"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_pay"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_btn"
+                        android:gravity="center"
+                        android:onClick="@{contentService.onPayClick}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_pay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@{2 == contentService.payStatus ? @drawable/icon_pay_blue_light : (1 == contentService.payStatus ? @drawable/icon_pay_dark : @drawable/icon_pay_dark)}" />
+
+                        <TextView
+                            android:id="@+id/tv_pay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/pay"
+                            android:textColor="@{2 == contentService.payStatus ? @color/color_green_3bb4bc : (1 == contentService.payStatus ? @color/color_gray_3e4143 : @color/color_gray_3e4143)}"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_service_button_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_evaluate"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_btn"
+                        android:gravity="center"
+                        android:onClick="@{contentService.onEvaluateClick}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_evaluate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@{2 == contentService.evaluateStatus ? @drawable/icon_comment_blue_light : (1 == contentService.evaluateStatus ? @drawable/icon_comment_blue : @drawable/icon_comment_dark)}" />
+
+                        <TextView
+                            android:id="@+id/tv_evaluate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/evaluation"
+                            android:textColor="@{2 == contentService.evaluateStatus ? @color/color_green_3bb4bc : (1 == contentService.evaluateStatus ? @color/color_green_173236 : @color/color_gray_3e4143)}"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_history"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_btn"
+                        android:gravity="center"
+                        android:onClick="@{contentService.onHistoryClick}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_history"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@{2 == contentService.historyStatus ? @drawable/icon_service_order_blue : (1 == contentService.historyStatus ? @drawable/icon_service_order_blue : @drawable/icon_service_order_dark)}" />
+
+                        <TextView
+                            android:id="@+id/tv_history"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/service_order"
+                            android:textColor="@{2 == contentService.historyStatus ? @color/color_green_173236 : (1 == contentService.historyStatus ? @color/color_green_173236 : @color/color_gray_3e4143)}"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_one_key_help"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/selector_btn_green"
+            android:gravity="center"
+            android:onClick="@{contentService.onOneKeyHelpClick}"
+            android:orientation="horizontal"
+            android:visibility="@{contentService.hasOneKeyHelp ? View.VISIBLE : View.GONE}">
+
+            <ImageView
+                android:id="@+id/iv_one_key_help"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/icon_sos_phone_black" />
+
+            <TextView
+                android:id="@+id/tv_one_key_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:text="@string/one_key_save"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

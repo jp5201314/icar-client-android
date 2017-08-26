@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="evaluation"
+            type="cn.icarowner.icarowner.activity.viewmodel.ItemEvaluationVM" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/fl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/color_white_faf9f9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_company_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="23dp"
+                android:text="@{evaluation.companyName}"
+                android:textColor="@color/color_black_0e1214"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_green_9ad6d9" />
+
+            <LinearLayout
+                android:id="@+id/ll_advisor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="23dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/service_advisor"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_advisor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{evaluation.advisorName}"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="23dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/license_plate"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_license_plate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:text="@{evaluation.licensePlate}"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/iv_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_vip" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_service_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="23dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/service_type"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_service_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{evaluation.serviceType}"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="23dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{evaluation.time}"
+                    android:textColor="@color/color_black_0e1214"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_green_9ad6d9" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_to_evaluate"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/selector_btn_green"
+            android:gravity="center"
+            android:onClick="@{evaluation.jumpToEvaluation}"
+            android:text="@string/evaluate_to_receive_coupon"
+            android:textColor="@color/color_white_ffffff"
+            android:textSize="15sp" />
+
+    </FrameLayout>
+</layout>

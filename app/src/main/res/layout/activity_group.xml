@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dealerList"
+            type="cn.icarowner.icarowner.activity.viewmodel.GroupVM" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:toolBar="@{dealerList.toolBarTitleVM}" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/color_green_3bb4bc"
+            android:src="@drawable/string_group_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="9dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/color_white_faf9f9"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_group_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:gravity="center"
+                android:text="@string/group_name"
+                android:textColor="@color/color_green_3bb4bc"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/color_gray_d8d8d8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/group_introduction"
+                android:textColor="@color/color_black_0e1214"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/brand_introduction"
+                android:textColor="@color/color_gray_666666"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/tv_dealer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:gravity="center"
+                android:text="@string/huaxing_benchi"
+                android:textColor="@color/color_black_0e1214"
+                android:textSize="15sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_dealer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:adapter="@{dealerList.adapter}"
+                app:addOnScrollListener="@{dealerList.onScrollListener}"
+                app:items="@{dealerList.items}"
+                app:layoutManager="@{dealerList.layoutManager}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,160 @@
+apply plugin: 'com.android.application'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    aaptOptions {
+        //不允许压缩png图片
+        cruncherEnabled = false
+    }
+
+    defaultConfig {
+        applicationId "cn.icarowner.icarowner"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 19
+        versionName "2.0.2"
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file(properties.get("SIGNING_CONFINGS_DEBUG_STORE_FILE"))
+            storePassword properties.getProperty("SIGNING_CONFINGS_DEBUG_STORE_PASSWORD")
+            keyAlias properties.getProperty("SIGNING_CONFINGS_DEBUG_KEY_ALIAS")
+            keyPassword properties.getProperty("SIGNING_CONFINGS_DEBUG_KEY_PASSWORD")
+        }
+        release {
+            storeFile file(properties.get("SIGNING_CONFINGS_REALEASE_STORE_FILE"))
+            storePassword properties.getProperty("SIGNING_CONFINGS_REALEASE_STORE_PASSWORD")
+            keyAlias properties.getProperty("SIGNING_CONFINGS_REALEASE_KEY_ALIAS")
+            keyPassword properties.getProperty("SIGNING_CONFINGS_REALEASE_KEY_PASSWORD")
+        }
+    }
+
+
+    productFlavors {
+        huawei {
+            resValue "string", "img_app_name", "我是车主"
+            manifestPlaceholders = [TD_CHANNEL_ID_VALUE: "huawei"]
+        }
+        xiaomi {
+            resValue "string", "img_app_name", "我是车主"
+            manifestPlaceholders = [TD_CHANNEL_ID_VALUE: "xiaomi"]
+        }
+        qh360 {
+            resValue "string", "img_app_name", "我是车主"
+            manifestPlaceholders = [TD_CHANNEL_ID_VALUE: "qh360"]
+        }
+        baidu {
+            resValue "string", "img_app_name", "我是车主"
+            manifestPlaceholders = [TD_CHANNEL_ID_VALUE: "baidu"]
+        }
+        yingyongbao {
+            resValue "string", "img_app_name", "我是车主"
+            manifestPlaceholders = [TD_CHANNEL_ID_VALUE: "yingyongbao"]
+        }
+        official {
+            resValue "string", "img_app_name", "我是车主"
+            manifestPlaceholders = [TD_CHANNEL_ID_VALUE: "official"]
+        }
+    }
+
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            minifyEnabled false
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        // 多个变体自定义输出配置
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                def fileName
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    if (variant.buildType.name == "debug") {
+                        fileName = "icar_V${defaultConfig.versionName}_${generateTime()}_debug.apk"
+                    } else if (variant.buildType.name == "release") {
+                        fileName = "icar_V${defaultConfig.versionName}_${variant.productFlavors[0].name}_${generateTime()}_release.apk"
+                    }
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url "https://jitpack.io"
+        }
+
+        maven {
+            url "https://repo.eclipse.org/content/repositories/paho-snapshots/"
+        }
+    }
+}
+
+static def generateTime() {
+    return new Date().format("yyyy-MM-dd-hh-mm", TimeZone.getDefault())
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/alipaySingle-20161009.jar')
+    compile files('libs/TalkingData_Analytics_Android_SDK_V2.2.37.jar')
+    compile files('libs/MobCommons-2016.0816.1507.jar')
+    compile files('libs/MobTools-2016.0816.1507.jar')
+    compile files('libs/ShareSDK-Core-2.7.6.jar')
+    compile files('libs/ShareSDK-Wechat-2.7.6.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.7.6.jar')
+    compile files('libs/banksdk.jar')
+    compile('org.eclipse.paho:org.eclipse.paho.android.service:1.0.2') {
+        exclude module: 'support-v4'
+    }
+    compile('org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2') {
+        exclude module: 'support-v4'
+    }
+    compile 'com.karumi:dexter:4.1.0'
+    compile 'cn.xiaomeng:httpdog:1.0.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'
+    compile 'com.alibaba:fastjson:1.2.7'
+    compile 'com.orhanobut:logger:1.11'
+    compile 'com.flyco.dialog:FlycoDialog_Lib:1.2.6@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'cc.cloudist.acplibrary:library:1.2.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.shizhefei:MVCHelper-UltraRefresh:1.0.6'
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+    compile 'com.github.lovetuzitong:MultiImageSelector:1.2'
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
+    compile 'com.facebook.fresco:fresco:1.0.1'
+    compile 'me.relex:photodraweeview:1.1.2'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.google.android.gms:play-services-plus:10.2.4'
+    testCompile 'junit:junit:4.12'
+}

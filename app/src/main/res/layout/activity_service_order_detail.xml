@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="serviceDetail"
+            type="cn.icarowner.icarowner.activity.viewmodel.ServiceOrderDetailVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:toolBar="@{serviceDetail.toolBarTitleVM}" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:onRefreshListener="@{serviceDetail.onRefreshListener}"
+            app:refreshing="@{serviceDetail.isRefreshing}">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/color_white_faf9f9"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:background="@color/color_green_3bb4bc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@color/color_green_3bb4bc"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_company_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="0dp"
+                            android:paddingStart="18dp"
+                            android:text="@{serviceDetail.companyName}"
+                            android:textColor="@color/color_white_ffffff"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_advisor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingEnd="0dp"
+                            android:paddingStart="18dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/service_advisor"
+                                android:textColor="@color/color_white_ffffff"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tv_advisor_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{serviceDetail.advisorName}"
+                                android:textColor="@color/color_white_ffffff"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="3dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="18dp"
+                        android:paddingTop="25dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/license_plate"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_license_plate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="38dp"
+                            android:gravity="center"
+                            android:paddingLeft="6dp"
+                            android:paddingRight="6dp"
+                            android:text="@{serviceDetail.plateNumber}"
+                            android:textColor="@color/color_gray_4f5152"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_vip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/icon_vip" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp"
+                        android:background="@color/color_gray_d8d8d8" />
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_into_factory_mileage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="3dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="18dp"
+                        android:paddingTop="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/into_factory_mileage"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_into_factory_mileage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:text="@{serviceDetail.intoFactoryMileage}"
+                            android:textColor="@color/color_gray_4f5152"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/kilometer"
+                            android:textColor="@color/color_gray_4f5152"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp"
+                        android:background="@color/color_gray_d8d8d8" />
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_service_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="3dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="18dp"
+                        android:paddingTop="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/service_type"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_service_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:text="@{serviceDetail.serviceType}"
+                            android:textColor="@color/color_gray_4f5152"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp"
+                        android:background="@color/color_gray_d8d8d8" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_time_start"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="3dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="18dp"
+                        android:paddingTop="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/construction_time"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_time_start"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{serviceDetail.startTime}"
+                                android:textColor="@{serviceDetail.startTimeIsNull ? @color/color_gray_a5a5a6 : @color/color_gray_4f5152}"
+                                android:textSize="15sp" />
+
+                            <ImageView
+                                android:id="@+id/iv_to_bottom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="3dp"
+                                android:layout_marginTop="3dp"
+                                android:src="@drawable/icon_to_bottom"
+                                android:visibility="@{serviceDetail.showArrow ? View.VISIBLE : View.GONE}" />
+
+                            <TextView
+                                android:id="@+id/tv_time_end"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{serviceDetail.endTime}"
+                                android:textColor="@{serviceDetail.endTimeIsNull ? @color/color_gray_a5a5a6 : @color/color_gray_4f5152}"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/color_green_3bb4bc" />
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_bill_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="18dp"
+                        android:paddingTop="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bill_fee"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_bill_fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:text="@{serviceDetail.amountOfBill}"
+                            android:textColor="@{serviceDetail.amountOfBillIsNull ? @color/color_gray_a5a5a6 : @color/color_gray_4f5152}"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_discount_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="18dp"
+                        android:paddingTop="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/discount_fee"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_discount_fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:text="@{serviceDetail.amountOfDiscount}"
+                            android:textColor="@{serviceDetail.amountOfDiscountIsNull ? @color/color_gray_a5a5a6 : @color/color_gray_4f5152}"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_pay_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="18dp"
+                        android:paddingTop="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pay_fee"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_pay_fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="13dp"
+                            android:text="@{serviceDetail.amountOfPayment}"
+                            android:textColor="@{serviceDetail.amountOfPaymentIsNull ? @color/color_gray_a5a5a6 : @color/color_gray_4f5152}"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_annex"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        android:visibility="@{serviceDetail.hasAnnex ? View.VISIBLE : View.GONE}">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/color_green_3bb4bc" />
+
+                        <TextView
+                            android:id="@+id/tv_annex"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:paddingEnd="0dp"
+                            android:paddingStart="13dp"
+                            android:text="@string/annex"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_order_annex"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/color_white_faf9f9"
+                        android:visibility="@{serviceDetail.hasAnnex ? View.VISIBLE : View.GONE}"
+                        app:adapter="@{serviceDetail.adapter}"
+                        app:items="@{serviceDetail.items}"
+                        app:layoutManager="@{serviceDetail.gridLayoutManager}" />
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="modifyInfo"
+            type="cn.icarowner.icarowner.activity.viewmodel.ModifyMyInfoVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/title_bar_height"
+                android:background="@color/color_black_0e1214"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@{modifyInfo.title}"
+                        android:textColor="@color/color_white_ffffff"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="48dp"
+                android:layout_height="39dp"
+                android:layout_gravity="start"
+                android:background="@null"
+                android:onClick="@{modifyInfo::onBackClick}"
+                android:src="@drawable/icon_left_arrow_white" />
+
+            <Button
+                android:id="@+id/bt_save"
+                android:layout_width="48dp"
+                android:layout_height="39dp"
+                android:layout_gravity="end"
+                android:background="@null"
+                android:onClick="@{modifyInfo::onSaveInfoClick}"
+                android:text="@string/save"
+                android:textColor="@color/color_white_ffffff"
+                android:textSize="15sp" />
+
+        </FrameLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadingEdge="none"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/color_gray_8b8c8d" />
+
+                <LinearLayout
+                    android:id="@+id/ll_edit_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:visibility="@{modifyInfo.isShowName?View.VISIBLE:View.GONE}">
+
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/color_white_faf9f9"
+                        android:hint="请输入姓名"
+                        android:maxLines="1"
+                        android:paddingEnd="48dp"
+                        android:paddingStart="16dp"
+                        android:text="@{modifyInfo.name}"
+                        android:textColor="@color/color_black_0e1214"
+                        android:textColorHint="@color/color_gray_a5a5a6"
+                        android:textSize="16sp"
+                        app:textChangedListener="@{modifyInfo.addTextChangedListener}" />
+
+                    <ImageButton
+                        android:id="@+id/ibt_clear"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end"
+                        android:background="@color/color_black_0e1214"
+                        android:onClick="@{modifyInfo::clearName}"
+                        android:padding="14dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/icon_clear_edit_content"
+                        android:visibility="@{modifyInfo.name!=@string/empty?View.VISIBLE:View.GONE}" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/color_white_faf9f9"
+                    android:onClick="@{modifyInfo::chooseGender}"
+                    android:visibility="@{modifyInfo.isShowGender?View.VISIBLE:View.GONE}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/gender"
+                        android:textColor="@color/color_gray_a5a5a6"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_gender"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|end"
+                        android:maxLines="1"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@{modifyInfo.gender}"
+                        android:textColor="@color/color_black_0e1214"
+                        android:textColorHint="@color/color_gray_a5a5a6"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="16dp"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="5dp"
+                        android:src="@drawable/icon_right_arrow_black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/color_white_faf9f9"
+                    android:onClick="@{modifyInfo::chooseBirth}"
+                    android:visibility="@{modifyInfo.isShowBirth?View.VISIBLE:View.GONE}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/birth"
+                        android:textColor="@color/color_gray_a5a5a6"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_birth"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|end"
+                        android:maxLines="1"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@{modifyInfo.birth}"
+                        android:textColor="@color/color_black_0e1214"
+                        android:textColorHint="@color/color_gray_a5a5a6"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="16dp"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="5dp"
+                        android:src="@drawable/icon_right_arrow_black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_gray_8b8c8d" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

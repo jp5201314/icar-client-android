@@ -1,0 +1,375 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_bill_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="cn.icarowner.icarowner.fragment.BillDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/pfl_ptr_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            cube_ptr:ptr_duration_to_close="300"
+            cube_ptr:ptr_duration_to_close_header="2000"
+            cube_ptr:ptr_keep_header_when_refresh="true"
+            cube_ptr:ptr_pull_to_fresh="false"
+            cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+            cube_ptr:ptr_resistance="1.7">
+
+            <ScrollView
+                android:id="@+id/sv_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/color_white_faf9f9"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/ll_license_plate"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iv_car"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/icon_car" />
+
+                        <TextView
+                            android:id="@+id/tv_license_plate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_vip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/icon_vip" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/color_green_9ad6d9" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/color_green_3bb4bc"
+                        android:gravity="center"
+                        android:text="@string/details"
+                        android:textColor="@color/color_white_ffffff"
+                        android:textSize="13sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_service_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/color_green_9ad6d9" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="@string/bill_fee"
+                                android:textColor="@color/color_black_0e1214"
+                                android:textSize="16sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:gravity="center_vertical|end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="@string/rmb_symbol"
+                                    android:textColor="@color/color_black_0e1214"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_bill_fee"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:singleLine="true"
+                                    android:textColor="@color/color_black_0e1214"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/color_gray_eaeaea" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_discount_fee"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="@string/discount_fee"
+                                android:textColor="@color/color_gray_666666"
+                                android:textSize="16sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:gravity="center_vertical|end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_discount_rmb_symbol"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/rmb_symbol"
+                                    android:textColor="@color/color_gray_666666"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                                <TextView
+                                    android:id="@+id/tv_preferential_fee"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:hint="@string/choice"
+                                    android:singleLine="true"
+                                    android:textColor="@color/color_gray_666666"
+                                    android:textColorHint="@color/color_green_3bb4bc"
+                                    android:textSize="16sp" />
+
+                                <ImageButton
+                                    android:id="@+id/ib_to_choice_coupon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end|center_vertical"
+                                    android:layout_marginStart="4dp"
+                                    android:background="@null"
+                                    android:onClick="onChooseCouponClick"
+                                    android:src="@drawable/icon_right_arrow_white" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/color_gray_eaeaea" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_balance_fee"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:gravity="center_vertical"
+                            android:onClick="onEditBalanceFeeClick"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="@string/use_balance"
+                                    android:textColor="@color/color_gray_666666"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_balance_fee"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:hint="@string/has_no_balance"
+                                    android:textColor="@color/color_gray_a5a5a6"
+                                    android:textColorHint="@color/color_gray_a5a5a6"
+                                    android:textSize="11sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:gravity="center_vertical|end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_balance_rmb_symbol"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:hint="@string/rmb_symbol"
+                                    android:textColor="@color/color_gray_666666"
+                                    android:textColorHint="@color/color_gray_d8d8d8"
+                                    android:textSize="16sp"
+                                    android:visibility="visible" />
+
+                                <EditText
+                                    android:id="@+id/et_choice_balance_fee"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:background="@null"
+                                    android:gravity="center"
+                                    android:hint="@string/zero_yuan"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10"
+                                    android:singleLine="true"
+                                    android:textColor="@color/color_gray_666666"
+                                    android:textColorHint="@color/color_gray_d8d8d8"
+                                    android:textSize="16sp" />
+
+                                <ImageButton
+                                    android:id="@+id/ib_to_edit_balance_fee"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="end|center_vertical"
+                                    android:layout_marginStart="4dp"
+                                    android:background="@null"
+                                    android:src="@drawable/icon_right_arrow_white" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/color_green_3bb4bc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/pay_with_colon"
+                            android:textColor="@color/color_black_0e1214"
+                            android:textSize="17sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="end"
+                            android:gravity="center_vertical|end"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="@string/rmb_symbol"
+                                android:textColor="@color/color_green_3bb4bc"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/tv_pay_fee"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:singleLine="true"
+                                android:textColor="@color/color_green_3bb4bc"
+                                android:textSize="17sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_sure_pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginRight="28dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@drawable/selector_btn_green"
+                        android:gravity="center"
+                        android:onClick="onPayClick"
+                        android:text="@string/sure_pay"
+                        android:textColor="@color/color_white_ffffff"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+            </ScrollView>
+
+        </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

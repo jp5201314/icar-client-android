@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="itemScheduleDetailCheckItem"
+            type="cn.icarowner.icarowner.activity.viewmodel.ItemScheduleDetailCheckItemVM" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="24dp">
+
+        <TextView
+            android:id="@+id/tv_check_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="18dp"
+            android:text="@{itemScheduleDetailCheckItem.checkItemName}"
+            android:textColor="@color/color_gray_5c5d5d"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="18dp"
+            android:src="@drawable/icon_checked_gray" />
+
+    </FrameLayout>
+
+</layout>

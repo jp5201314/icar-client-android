@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="scheduleList"
+            type="cn.icarowner.icarowner.activity.viewmodel.ScheduleListVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:toolBar="@{scheduleList.toolBarTitleVM}" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:onRefreshListener="@{scheduleList.onRefreshListener}"
+            app:refreshing="@{scheduleList.isRefreshing}">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_schedule_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{scheduleList.adapter}"
+                app:addOnScrollListener="@{scheduleList.onScrollListener}"
+                app:items="@{scheduleList.items}"
+                app:layoutManager="@{scheduleList.layoutManager}" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    </LinearLayout>
+</layout>
+

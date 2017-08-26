@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="choiceCouponList"
+            type="cn.icarowner.icarowner.activity.viewmodel.ChoiceCouponListVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:toolBar="@{choiceCouponList.toolBarTitleVM}" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:onRefreshListener="@{choiceCouponList.onRefreshListener}"
+            app:refreshing="@{choiceCouponList.isRefreshing}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_coupon_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{choiceCouponList.adapter}"
+                app:addOnScrollListener="@{choiceCouponList.onScrollListener}"
+                app:items="@{choiceCouponList.items}"
+                app:layoutManager="@{choiceCouponList.layoutManager}" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    </LinearLayout>
+</layout>

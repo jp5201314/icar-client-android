@@ -1,0 +1,14 @@
+
+.gradle/
+.idea/
+build/
+*.DS_Store
+*.iml
+local.properties
+keystore.properties
+app/app-debug.apk
+app/app-release.apk
+app/class_files.txt
+app/mapping.txt
+app/seeds.txt
+app/unused.txt

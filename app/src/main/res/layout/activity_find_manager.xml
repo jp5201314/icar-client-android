@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="findManager"
+            type="cn.icarowner.icarowner.activity.viewmodel.FindManagerVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_gray_d8d8d8"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:context="cn.icarowner.icarowner.activity.FindManagerActivity">
+
+        <include
+            layout="@layout/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            bind:toolBar="@{findManager.toolBarTitleVM}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/color_white_faf9f9"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:src="@drawable/img_title_find_manager" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/color_gray_d8d8d8" />
+
+                <LinearLayout
+                    android:id="@+id/ll_estimated_time_to_pick_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="9dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/estimated_time_to_pick_up"
+                        android:textColor="@color/color_black_0e1214"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_estimated_time_to_pick_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="@{TextUtils.isEmpty(findManager.estimateFinishTime)? @string/no :findManager.estimateFinishTime}"
+                        android:textColor="@color/color_gray_666666"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_actual_time_to_pick_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="7dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/actual_time_to_pick_up"
+                        android:textColor="@color/color_black_0e1214"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_actual_time_to_pick_up"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="@{TextUtils.isEmpty(findManager.actualFinishTime)? @string/no :findManager.actualFinishTime}"
+                        android:textColor="@color/color_green_3bb4bc"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="9dp"
+                    android:background="@color/color_gray_d8d8d8" />
+
+                <LinearLayout
+                    android:id="@+id/ll_problem_tip_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:orientation="vertical" />
+
+                <EditText
+                    android:id="@+id/et_supplementary_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="36dp"
+                    android:background="@drawable/selector_edit_text_view"
+                    android:gravity="start"
+                    android:hint="@string/other_supplementary_content"
+                    android:minHeight="100dp"
+                    android:paddingLeft="19dp"
+                    android:paddingRight="19dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/color_gray_a5a5a6"
+                    android:textColorHint="@color/color_gray_a5a5a6"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_commit"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginRight="28dp"
+                    android:layout_marginTop="56dp"
+                    android:background="@drawable/selector_btn_green"
+                    android:gravity="center"
+                    android:onClick="@{findManager.onCommitClick}"
+                    android:text="@string/commit"
+                    android:textColor="@color/color_white_ffffff"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</layout>
